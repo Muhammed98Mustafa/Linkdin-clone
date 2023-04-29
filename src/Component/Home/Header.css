@@ -1,0 +1,19 @@
+.link{
+    display: flex ;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+   
+    color: rgba(0, 0, 0, 0.6) ;
+    @media (max-width: 575px) {
+        font-size: 8px;
+        
+      };
+     
+        
+    }
+    
+
+.link:hover  {
+    color: black;
+}

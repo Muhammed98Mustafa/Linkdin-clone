@@ -12,6 +12,7 @@ export const singinWithGoogle =createAsyncThunk("users/singinWithGoogle" , async
             uid: user.uid,
             displayName: user.displayName,
             email: user.email,
+            photo :user.photoURL
             // Add any other necessary user properties
           };
         return serializedUser ;
