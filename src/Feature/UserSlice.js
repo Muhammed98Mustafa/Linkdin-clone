@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {   GoogleAuthProvider , signInWithPopup  } from "firebase/auth"; 
+import {   GoogleAuthProvider , signInWithPopup  , signOut } from "firebase/auth"; 
 import {auth} from "../firebaseConfg"
 
 
@@ -22,12 +22,20 @@ export const singinWithGoogle =createAsyncThunk("users/singinWithGoogle" , async
     }
 })
 
+ export const Singoutuser =createAsyncThunk("users/singoutuser" ,async(_ , {rejectWithValue})=> {
+    try{
+        await signOut(auth) ;
+    }
+   catch(e) {
+     return rejectWithValue(e.message)
+   }
+}) 
 
 const UserSlice = createSlice({
     name:"users" ,
     initialState : {
         user: null ,
-        userLogin: false ,
+        userLogin: true ,
         singedup : false ,
         error: null ,
     },
@@ -40,13 +48,21 @@ const UserSlice = createSlice({
         console.log(action.payload)
         state.user = action.payload ;
         state.singedup = true ;
+        state.userLogin = true ; 
     })
-    builder.addCase(singinWithGoogle.pending ,(state , action )=>{
-
-    })
+  
     builder.addCase(singinWithGoogle.rejected ,(state , action )=>{
         alert(action.payload)
+    });
+    builder.addCase(Singoutuser.fulfilled ,(state , action )=>{
+        console.log(action.payload)
+        state.user = null;
+        state.singedup = false ;
+        state.userLogin = false ;
     })
+    builder.addCase(Singoutuser.rejected ,(state , action )=>{
+        alert(action.payload)
+    }) 
 
     }
 

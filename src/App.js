@@ -1,17 +1,19 @@
 import React from 'react'
-import { BrowserRouter , Route , Routes } from 'react-router-dom';
+import {  Route , Routes } from 'react-router-dom';
 import Login from './Component/Login/Login';
 import Home from './Component/Home/home';
+import AuthReq from './Component/AuthReq';
+
  const App = () => {
   return (
     <div >
 
-      <BrowserRouter > 
+   
       <Routes> 
       <Route path="/"  element={<Login/>} /> 
-      <Route path="/home" element={<Home/>} />
+      <Route path="/home" element={<AuthReq><Home /></AuthReq>} /> {/* Update usage of AuthReq */}
       </Routes>
-      </BrowserRouter> 
+   
 
     </div>
   )

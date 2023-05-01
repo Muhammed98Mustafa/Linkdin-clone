@@ -8,13 +8,13 @@ import { useNavigate } from 'react-router-dom';
  const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {user} = useSelector(state => state.users) ;
+  const { userLogin} = useSelector(state => state.users) ;
 
   useEffect(()=>{
-    if(user){
+    if(userLogin){
       navigate("/home")
     }
-  } , [user , navigate])
+  } , [userLogin   , navigate])
 
   const handleGoogleSignIn = () => {
     dispatch(singinWithGoogle({}));
