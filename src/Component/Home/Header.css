@@ -39,3 +39,10 @@
 .rightside {
     grid-area: rightside;
 }
+
+.cancel-default-button-style{
+    padding: 12px !important;
+    font-size: inherit !important;
+    font-family: inherit !important;
+    text-align: left !important;
+}

@@ -35,7 +35,7 @@ const UserSlice = createSlice({
     name:"users" ,
     initialState : {
         user: null ,
-        userLogin: true ,
+        userLogin: false ,
         singedup : false ,
         error: null ,
     },

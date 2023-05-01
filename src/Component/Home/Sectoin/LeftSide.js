@@ -13,12 +13,12 @@ const LeftSide=()=> {
     const {user} = useSelector(state => state.users)
     return (
         <div>
-               <div className="border-2 bg-white rounded-md relative ml-2" >
+               <div className=" " >
 
                 <div > 
                     <img src="/images/card-bg.svg"  alt=""/> 
                 </div>
-                <div className="rounded-full  inline-block  translate-x-28 -translate-y-8 bg-white p-2"> 
+                <div className="rounded-full  inline-block  translate-x-[120%] -translate-y-8 bg-white p-2"> 
                 <button type="button"> 
                     <img className="" src="/images/photo.svg" alt=""/>
                     </button>
@@ -29,12 +29,12 @@ const LeftSide=()=> {
                     <p className="text-[#868e96] mt-4 ml-2 text-sm"> Connections</p>
                     <div className="flex flex-row justify-between ml-2 mr-2 text-sm font-bold mb-4 "> <span> Grow your network</span>  <button> <img src="/images/widget-icon.svg" alt="" /></button>  </div>
                     <hr/>
-                    <div className="ml-2 py-2"> 
+                    <button className="ml-2 py-2"> 
                     <span>
                      <img className="inline" src="/images/item-icon.svg" alt="" />
                      My Items
                  </span>
-                    </div>
+                    </button>
                     
                 </div>
                 
