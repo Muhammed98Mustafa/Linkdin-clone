@@ -2,16 +2,26 @@ import { useSelector } from "react-redux";
 import Model from "./Modal";
 import { useDisclosure, Button } from "@chakra-ui/react";
 import "../Header.css";
+import { useEffect, useState } from "react";
 
 const Main = () => {
   const { user } = useSelector((state) => state.users);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  
+  const [setphoto , setSetphoto] = useState("/images/user.svg");
+  useEffect(()=>{
+    if(user){
+      setSetphoto(user?.photo)
+    
+    }
+
+
+  }, [user])
   return (
     <div>
       <div className="border-2 bg-white rounded-md relative ml-2 ">
         <div className="flex flex-row mx-2 py-4 gap-1">
-          <img className="h-12 w-12 rounded-full" src={user?.photo} />
+        <img className="h-12 w-12 rounded-full" src={user?.photo}  alt=""/>
+          
           <Button
             onClick={onOpen}
             type="button"

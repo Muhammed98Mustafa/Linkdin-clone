@@ -46,3 +46,6 @@
     font-family: inherit !important;
     text-align: left !important;
 }
+.custom-modal-footer{
+    justify-content:space-between!important ;
+}
