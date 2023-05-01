@@ -6,6 +6,7 @@ import "../Header.css";
 const Main = () => {
   const { user } = useSelector((state) => state.users);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  
   return (
     <div>
       <div className="border-2 bg-white rounded-md relative ml-2 ">
@@ -43,7 +44,7 @@ const Main = () => {
           </button>
         </div>
       </div>
-      <Model isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+      <Model isOpen={isOpen} onOpen={onOpen} onClose={onClose} user={user} />
     </div>
   );
 };
