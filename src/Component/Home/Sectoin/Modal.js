@@ -24,21 +24,40 @@ function capitalizeName(name) {
 }
 
 function BasicUsage({ isOpen, onOpen, onClose, user }) {
-  const [Textarea, setTextarea] = useState();
-  const [video, setVideo] = useState();
-  const [Selectmida, setSelectmida] = useState();
+  const [Textarea, setTextarea] = useState("");
+  const [video, setVideo] = useState("");
+  const [Selectmida, setSelectmida] = useState("");
+  const [shareimage, setShareimage] = useState("");
 
-  const handleclone=()=> {
+  const handleclose = () => {
     onClose();
-    setSelectmida();
-    setVideo();
-    setTextarea();
-
-  }
-
+    setSelectmida(""); // Update to setSelectmida("")
+    setVideo("");
+    setShareimage("");
+    setTextarea("");
+  };
+  const handlepost = () => {
+    console.log("post clicked");
+  };
+  const handlesetmedia = (e) => {
+    setVideo("");
+    setShareimage("");
+    setSelectmida(e);
+  };
+  const handleUploadImage = (e) => {
+    console.log(e.target.files[0]);
+    const image = e.target.files[0];
+    if (image === "" && image === undefined) {
+      alert(`not an image , the fiel is ${typeof image}`);
+      return;
+    } else {
+      setSelectmida("photo");
+      setShareimage(image);
+    }
+  };
   return (
     <>
-      <Modal isOpen={isOpen} onClose={handleclone} size="xl">
+      <Modal isOpen={isOpen} onClose={handleclose} size="xl">
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>Create Post</ModalHeader>
@@ -62,7 +81,20 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
             />
             {Selectmida === "photo" ? (
               <div>
-                <input type="file" id="file" name="id" className="hidden" />
+                <input
+                  type="file"
+                  id="file"
+                  name="id"
+                  className="hidden"
+                  onChange={handleUploadImage}
+                />
+                <input
+                  type="file"
+                  id="file"
+                  name="id"
+                  className="hidden"
+                  onChange={handleUploadImage}
+                />
                 <div>
                   <label
                     htmlFor="file"
@@ -70,7 +102,9 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
                   >
                     Select an image to share
                   </label>
-                  <img src="" alt="" />
+                  {shareimage && (
+                    <img src={URL.createObjectURL(shareimage)} alt="img" />
+                  )}
                 </div>
               </div>
             ) : (
@@ -78,8 +112,9 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
                 <div>
                   <input
                     type="text"
+                    placeholder="Past Your video URL Here... "
                     onChange={(e) => setVideo(e.target.value)}
-                    className="w-full border-2 p-2"
+                    className="w-full border-2 p-2 mt-2"
                   />
                   {video && <ReactPlayer url={video} controls width="100%" />}
                 </div>
@@ -89,15 +124,15 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
 
           <ModalFooter className="custom-modal-footer">
             {/*   <Button colorScheme='blue' mr={3} onClick={onClose}>
-                  Close
-                </Button> */}
+                    Close
+                  </Button> */}
 
             <div className="flex flex-row items-center gap-4">
-              <button onClick={() => setSelectmida("photo")}>
+              <button onClick={() => handlesetmedia("photo")}>
                 {" "}
                 <img src="/images/share-image.svg" alt="" />
               </button>
-              <button onClick={() => setSelectmida("video")}>
+              <button onClick={() => handlesetmedia("video")}>
                 {" "}
                 <img src="/images/share-video.svg" alt="" />
               </button>
@@ -114,10 +149,15 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
             </div>
 
             <button
-              className="border-2 py-1 px-4 rounded-full"
-              onClick={onClose}
+              className={`border-2 py-1 px-4 rounded-full bg-[#4dabf7]  hover:bg-[#339af0] transition-all duration-300 text-white font-bold ${
+                Textarea?.trim().length > 0
+                  ? ""
+                  : "bg-[#ced4da]  hover:bg-[#ced4da] cursor-no-drop "
+              }`}
+              onClick={handlepost}
+              disabled={!Textarea || Textarea?.trim().length === 0}
             >
-              Post
+              Postb
             </button>
           </ModalFooter>
         </ModalContent>
