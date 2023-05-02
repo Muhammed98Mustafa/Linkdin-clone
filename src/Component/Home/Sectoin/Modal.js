@@ -10,6 +10,9 @@ import {
 } from "@chakra-ui/react";
 import ReactPlayer from "react-player";
 import { useState } from "react";
+import {SendPost} from '../../../Feature/UserSlice'
+import { useDispatch } from "react-redux";
+import { Timestamp } from "firebase/firestore";
 
 function capitalizeName(name) {
   if (!name) {
@@ -28,7 +31,7 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
   const [video, setVideo] = useState("");
   const [Selectmida, setSelectmida] = useState("");
   const [shareimage, setShareimage] = useState("");
-
+  const dispatch = useDispatch();
   const handleclose = () => {
     onClose();
     setSelectmida(""); // Update to setSelectmida("")
@@ -36,8 +39,16 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
     setShareimage("");
     setTextarea("");
   };
-  const handlepost = () => {
-    console.log("post clicked");
+  const handlepost = (e) => {
+    dispatch(SendPost({
+     
+        image: shareimage,
+        video: video,
+        user: user,
+        description: Textarea,
+        timestamp: Timestamp.now(),
+      
+    }))
   };
   const handlesetmedia = (e) => {
     setVideo("");
@@ -157,7 +168,7 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
               onClick={handlepost}
               disabled={!Textarea || Textarea?.trim().length === 0}
             >
-              Postb
+              Post
             </button>
           </ModalFooter>
         </ModalContent>
