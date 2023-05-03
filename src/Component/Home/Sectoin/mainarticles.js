@@ -2,15 +2,14 @@ import React from "react";
 import ReactPlayer from "react-player";
 
 export const mainarticles = ({ articles }) => {
-  //  console.log(articles.length)
-  //   console.log(articles)
+
   return (
     <div className="">
-      {articles.length === 0 && <div> no article </div>}
+      {articles.length === 0 && <p className="mx-auto text-center text-4xl  font-bold lg:mt-24 mt-12 " > ...no articles yet </p>}
 
       {articles?.map((article , index) => {
         return (
-          <div key={index} className="bg-white  rounded-md lg:mt-16 my-8 pt-4 border-2 border-slate-200">
+          <div key={index} className="bg-white  rounded-md lg:mt-8 my-4 pt-4 border-2 border-slate-200">
             <div className="flex flex-row justify-between items-start pl-4">
               <div className="flex flex-row gap-2 ">
                 <div className="w-12 h-12  ">
@@ -37,7 +36,7 @@ export const mainarticles = ({ articles }) => {
               </button>
             </div>
             <body > 
-              <p className="lg:ml-6 ml-4 mt-12 mb-2"> {article.description} </p>
+              <p className="lg:ml-6 ml-4 mt-8 mb-2"> {article.description} </p>
               {
                 article.video !== "" && ( <ReactPlayer url={article.video} controls width="100%" />)
               }

@@ -47,7 +47,7 @@ const Header = () => {
           <img src="/images/chaticon.svg" className="w-[20px]  lg:hidden" alt="" />
         </div>
       </div>
-      <div className=" lg:w-fit w-full lg:mx-0  lg:flex  lg:flex-row flex flex-row justify-center items-center gap-8 lg:items-center lg:mr-12 md:mr-4 lg:static fixed bottom-0 bg-white	 ">
+      <div className=" lg:w-fit w-full lg:mx-0  lg:flex  lg:flex-row flex flex-row justify-center items-center gap-8 lg:items-center lg:mr-12 md:mr-4 lg:static fixed bottom-0 bg-white z-10 	 ">
         <div className="border-b-2	py-2 border-black ">
           <button className="link" >
             <img src="/images/nav-home.svg" alt="" />

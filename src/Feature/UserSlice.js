@@ -212,7 +212,6 @@ const UserSlice = createSlice({
       alert(action.payload);
     });
       builder.addCase(fetchdata.fulfilled, (state, action) => {
-        console.log(action.payload);
           state.articles = action.payload  
           state.loadingposts = false ;
       });
