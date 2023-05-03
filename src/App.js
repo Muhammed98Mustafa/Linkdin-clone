@@ -6,7 +6,7 @@ import AuthReq from './Component/AuthReq';
 
  const App = () => {
   return (
-    <div >
+    <div className='bg-[#f5f5f5]' >
 
    
       <Routes> 

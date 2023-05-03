@@ -5,17 +5,9 @@ import "../Header.css";
 import { useEffect, useState } from "react";
 
 const Main = () => {
-  const { user } = useSelector((state) => state.users);
+  const { user , articles } = useSelector((state) => state.users);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [setphoto , setSetphoto] = useState("/images/user.svg");
-  useEffect(()=>{
-    if(user){
-      setSetphoto(user?.photo)
-    
-    }
 
-
-  }, [user])
   return (
     <div>
       <div className="border-2 bg-white rounded-md relative ml-2 ">

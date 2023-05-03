@@ -6,7 +6,6 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Button,
 } from "@chakra-ui/react";
 import ReactPlayer from "react-player";
 import { useState } from "react";
@@ -49,6 +48,7 @@ function BasicUsage({ isOpen, onOpen, onClose, user }) {
         timestamp: Timestamp.now(),
       
     }))
+    handleclose();
   };
   const handlesetmedia = (e) => {
     setVideo("");

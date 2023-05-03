@@ -2,8 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth , storage ,db } from "../firebaseConfg";
 import {  ref ,getDownloadURL ,uploadBytesResumable } from "firebase/storage";
-import { collection, addDoc} from "firebase/firestore"; 
+import { doc, setDoc} from "firebase/firestore"; 
+import { Timestamp } from 'firebase/firestore';
 
+
+
+// sing up or singin method my google 
 export const singinWithGoogle = createAsyncThunk(
   "users/singinWithGoogle",
   async (payload, { rejectWithValue }) => {
@@ -24,35 +28,81 @@ export const singinWithGoogle = createAsyncThunk(
   }
 );
 
+// function to create random id for post request
+function generateRandomString() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let randomString = '';
+  
+  for (let i = 0; i < 15; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomString += characters.charAt(randomIndex);
+  }
+  
+  return randomString;
+}
+
+ //SendPost
+
  export const SendPost = createAsyncThunk('users/sendpost' , async(payload , {rejectWithValue})=>{
     const {image ,video ,user , description ,timestamp} = payload ;
-        console.log(payload)
+        const id = generateRandomString();
   try{
     if(image){
         const imagesRef = ref(storage, image.name);
         const uploadTask = uploadBytesResumable(imagesRef, image);
-        const imageurl = await getDownloadURL(uploadTask.snapshot.ref).then((download) => {
-            return download;
-          });
-        const docref = collection(db , 'articles');
-        const article = await addDoc(docref , {
-            actor: {
-                description: user.email,
-                title: user.displayName,
-                date: timestamp,
-                image: user.photo,
-              },
-              comments: 0,
-              video: video,
-              description: description,
-              shareImg: imageurl,
+        uploadTask.on('state_changed', 
+  (snapshot) => {
+    // Observe state change events such as progress, pause, and resume
+    // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    console.log('Upload is ' + progress + '% done');
+  }, 
+  (error) => {
+    // Handle unsuccessful uploads
+  }, 
+  () => {
+    // Handle successful uploads on complete
+    // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+    getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
+      const docref = doc(db , 'articles' , id);
+       await setDoc(docref , {
+          actor: {
+              description: user.email,
+              title: user.displayName,
+              date: timestamp,
+              image: user.photo,
+            },
+            comments: 0,
+            video: video,
+            description: description,
+            shareImg: downloadURL,
+    });
+    const date = timestamp.toDate().toISOString();
+    const article = {
+      actor: {
+        description: user.email,
+        title: user.displayName,
+        date: date,
+        image: user.photo,
+      },
+      comments: 0,
+      video: video,
+      description: description,
+      shareImg: downloadURL,
+    }
+    return article
+  }
+);
+        
+     
+              
         })
-        console.log(article);
+       
     }
     
     else {
-        const docref = collection(db , 'articles');
-        const article = await addDoc(docref , {
+        const docref = doc(db , 'articles' , id);
+         await setDoc(docref , {
             actor: {
                 description: user.email,
                 title: user.displayName,
@@ -64,9 +114,23 @@ export const singinWithGoogle = createAsyncThunk(
               description: description,
               shareImg:image ,
         })
-        console.log(article);
+        const date = timestamp.toDate().toISOString();
+        const article = {
+        actor :  {
+          description: user.email,
+          title: user.displayName,
+          date: date,
+          image: user.photo,
+        } ,
+        comments: 0,
+        video: video,
+        description: description,
+        shareImg:image ,
+  }
+        return article
+        };
     }
-}
+
 catch(e){
    rejectWithValue(e.code)
 }
@@ -83,14 +147,15 @@ export const Singoutuser = createAsyncThunk(
   }
 );
 
-const UserSlice = createSlice({
-  name: "users",
-  initialState: {
-    user: null,
-    userLogin: false,
-    singedup: false,
-    error: null,
-  },
+  const UserSlice = createSlice({
+    name: "users",
+    initialState: {
+      user: null,
+      userLogin: false,
+      singedup: false,
+      error: null,
+      articles : [],
+    },
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(singinWithGoogle.fulfilled, (state, action) => {
@@ -113,11 +178,14 @@ const UserSlice = createSlice({
       alert(action.payload);
     });
     builder.addCase(SendPost.fulfilled, (state, action) => {
-        console.log(action.payload);
+     
+      state.articles.push(action.payload);
+        console.log(action.payload)
+        console.log(state.articles)
         
       });
       builder.addCase(SendPost.pending, (state, action) => {
-        alert(action.payload);
+
       });
       builder.addCase(SendPost.rejected, (state, action) => {
         alert(action.payload);

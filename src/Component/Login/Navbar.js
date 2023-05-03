@@ -2,7 +2,7 @@ import React from 'react'
 
  const Navbar = () => {
   return (
-    <div className='flex  justify-between lg:w-9/12 mt-4' >
+    <div className='flex  justify-between lg:w-9/12 pt-4' >
         <a href='/index' className='lg:w-[12%] w-4/12 lg:ml-6  ml-2 '> 
             <img src='/images/login-logo.svg' alt='log' /> 
         </a>

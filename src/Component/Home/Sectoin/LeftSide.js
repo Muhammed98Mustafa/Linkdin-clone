@@ -13,7 +13,7 @@ const LeftSide=()=> {
     const {user} = useSelector(state => state.users)
     return (
         <div>
-               <div className=" " >
+               <div className=" bg-white ml-2" >
 
                 <div > 
                     <img src="/images/card-bg.svg"  alt=""/> 
