@@ -1,0 +1,52 @@
+Date : 2023-05-03 08:56:02
+Directory : c:\Users\isc\Desktop\New folder\Linkdin-clone\src
+Total : 18 files,  811 codes, 24 comments, 105 blanks, all 940 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         15 |        724 |         24 |         89 |        837 |
+| CSS        |          3 |         87 |          0 |         16 |        103 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                     | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                        |         18 |        811 |         24 |        105 |        940 |
+| . (Files)                                                                                |          5 |         97 |          9 |         22 |        128 |
+| Component                                                                                |         11 |        536 |          5 |         68 |        609 |
+| Component (Files)                                                                        |          1 |         15 |          0 |         11 |         26 |
+| Component\Home                                                                           |          8 |        465 |          5 |         49 |        519 |
+| Component\Home (Files)                                                                   |          3 |        167 |          2 |         22 |        191 |
+| Component\Home\Sectoin                                                                   |          5 |        298 |          3 |         27 |        328 |
+| Component\Login                                                                          |          2 |         56 |          0 |          8 |         64 |
+| Feature                                                                                  |          1 |        171 |         10 |         13 |        194 |
+| Store                                                                                    |          1 |          7 |          0 |          2 |          9 |
++------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                 | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\App.css                                | CSS        |         33 |          0 |          6 |         39 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\App.js                                 | JavaScript |         16 |          0 |          5 |         21 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\AuthReq.js                   | JavaScript |         15 |          0 |         11 |         26 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Header.css              | CSS        |         43 |          0 |          8 |         51 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Header.js               | JavaScript |         96 |          2 |          8 |        106 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Sectoin\LeftSide.js     | JavaScript |         62 |          0 |         10 |         72 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Sectoin\Main.js         | JavaScript |         53 |          0 |          4 |         57 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Sectoin\Modal.js        | JavaScript |        170 |          1 |         10 |        181 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Sectoin\RightSide.js    | JavaScript |          4 |          0 |          1 |          5 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\Sectoin\mainarticles.js | JavaScript |          9 |          2 |          2 |         13 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Home\home.js                 | JavaScript |         28 |          0 |          6 |         34 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Login\Login.js               | JavaScript |         40 |          0 |          6 |         46 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Component\Login\Navbar.js              | JavaScript |         16 |          0 |          2 |         18 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Feature\UserSlice.js                   | JavaScript |        171 |         10 |         13 |        194 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\Store\store.js                         | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\firebaseConfg.js                       | JavaScript |         17 |          6 |          4 |         27 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\index.css                              | CSS        |         11 |          0 |          2 |         13 |
+| c:\Users\isc\Desktop\New folder\Linkdin-clone\src\index.js                               | JavaScript |         20 |          3 |          5 |         28 |
+| Total                                                                                    |            |        811 |         24 |        105 |        940 |
++------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

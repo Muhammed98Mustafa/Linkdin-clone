@@ -3,10 +3,12 @@ import Model from "./Modal";
 import { useDisclosure, Button } from "@chakra-ui/react";
 import "../Header.css";
 import { useEffect, useState } from "react";
+import Mainarticles from "./mainarticles";
 
 const Main = () => {
   const { user , articles } = useSelector((state) => state.users);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log(articles)
 
   return (
     <div>
@@ -47,6 +49,7 @@ const Main = () => {
         </div>
       </div>
       <Model isOpen={isOpen} onOpen={onOpen} onClose={onClose} user={user} />
+      <Mainarticles articles = {articles} /> 
     </div>
   );
 };

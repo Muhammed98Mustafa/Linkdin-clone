@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from './Navbar';
-import {singinWithGoogle} from "../../Feature/UserSlice"
+import {fetchdata, singinWithGoogle} from "../../Feature/UserSlice"
 import { useDispatch , useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom';
 
   const handleGoogleSignIn = () => {
     dispatch(singinWithGoogle({}));
+    dispatch(fetchdata()) 
   };
   return (
     <> 
